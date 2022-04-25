@@ -1,0 +1,172 @@
+administrator@administrator-OptiPlex-5060:~$ sudo mysql -u root -p
+[sudo] password for administrator: 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.7.37-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES
+    -> ;
++----------------------------+
+| Database                   |
++----------------------------+
+| information_schema         |
+| 23159_onlineShoppingSystem |
+| 23241_Assignmnets          |
+| 23304_Assignment           |
+| CUSTOMER                   |
+| EMPLOYEE                   |
+| Emp                        |
+| O_database                 |
+| OnlineShopping             |
+| Order_database             |
+| PROJECT                    |
+| abc                        |
+| company                    |
+| companydbms                |
+| dbname                     |
+| emp                        |
+| mysql                      |
+| online_shopping_system     |
+| performance_schema         |
+| studenT                    |
+| sys                        |
++----------------------------+
+21 rows in set (0.07 sec)
+
+mysql> USE online_shopping_system;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++----------------------------------+
+| Tables_in_online_shopping_system |
++----------------------------------+
+| customer                         |
+| payment                          |
+| product                          |
+| seller                           |
++----------------------------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE customer;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | NO   | PRI | NULL    |       |
+| address | varchar(20) | NO   |     | NULL    |       |
+| emailID | varchar(20) | NO   | PRI | NULL    |       |
+| phoneNo | varchar(10) | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customer;
++--------------+---------+------------------+------------+
+| name         | address | emailID          | phoneNo    |
++--------------+---------+------------------+------------+
+| Sujit        | Pune    | sujit@gmail.com  | 0123456789 |
+| Sujit Patil  | Mumbai  | sujit9@gmail.com | 9501284721 |
+| Sujit Patil2 | Mumbai  | psujit@gmail.com | 9001284721 |
+| Sujit1       | Pune    | sujit1@gmail.com | 9876543210 |
+| Sujit2       | Pune    | sujit2@gmail.com | 0123658749 |
+| Sujit3       | Pune    | sujit3@gmail.com | 0124158749 |
+| Sujit4       | Jalgaon | sujit4@gmail.com | 8596214791 |
+| Sujit5       | Jalgaon | sujit5@gmail.com | 8596214721 |
+| Sujit6       | Jalgaon | sujit6@gmail.com | 9546214721 |
+| Sujit7       | Jalgaon | sujit7@gmail.com | 9546284721 |
+| Sujit8       | Mumbai  | sujit8@gmail.com | 9541284721 |
++--------------+---------+------------------+------------+
+11 rows in set (0.01 sec)
+
+mysql> DESCRIBE payment;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| paymentID | varchar(10) | NO   | PRI | NULL    |       |
+| amount    | int(11)     | NO   |     | NULL    |       |
+| bank      | varchar(30) | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from payment;
++------------+--------+-----------------------+
+| paymentID  | amount | bank                  |
++------------+--------+-----------------------+
+| AXIS000153 | 100000 | Axis Bank             |
+| BOB0000153 | 150000 | Bank of Baroda        |
+| BOM0000153 | 200000 | Bank of Maharashtra   |
+| CBI0000153 |  12000 | Central Bank of India |
+| DB0000163  | 120000 | Dena Bank             |
+| HDFC000153 |  18000 | HDFC Bank             |
+| IDBI000153 | 120000 | IDBI Bank             |
+| PNB0000153 |  20000 | Punjab National Bank  |
+| SBI0000123 |  10000 | State Bank of India   |
+| UBI0000153 |  15000 | Union Bank of India   |
++------------+--------+-----------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> DESCRIBE product;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| productID    | varchar(20) | NO   | PRI | NULL    |       |
+| productName  | varchar(20) | NO   | PRI | NULL    |       |
+| productPrice | int(11)     | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from seller;
++-------------------------------+---------+
+| shopNAme                      | city    |
++-------------------------------+---------+
+| ABC Computers                 | Pune    |
+| ABC Computers(Sales&Services) | Jalgaon |
+| ABC Electronics               | Mumbai  |
+| ABC MobilesSales&Services     | Jalgaon |
+| PQR Electronics               | Pune    |
+| PQR Mobiles                   | Pune    |
+| PQR Mobiles(Sales&Services)   | Pune    |
+| XYZ Electronics               | Mumbai  |
+| XYZ Enterprises               | Pune    |
++-------------------------------+---------+
+9 rows in set (0.02 sec)
+
+mysql> DESCRIBE seller;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| shopNAme | varchar(30) | NO   | PRI | NULL    |       |
+| city     | varchar(20) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> slelect * from  product;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slelect * from  product' at line 1
+mysql> select * from  product;
++-----------+-------------------+--------------+
+| productID | productName       | productPrice |
++-----------+-------------------+--------------+
+| LAPTOP001 | Asus Vivobook 14  |        58500 |
+| LAPTOP002 | Asus Vivobook 15  |        70000 |
+| LAPTOP003 | Apple Macbook Air |        92000 |
+| LAPTOP004 | Apple Macbook Pro |       150000 |
+| LAPTOP005 | Lenovo IdeaPad 5  |        70000 |
+| LAPTOP006 | Asus TUF Gaming 5 |        80000 |
+| LAPTOP007 | Asus ROG Zephyrus |        90000 |
+| LAPTOP008 | Dell Inspiron 14  |        90000 |
+| LAPTOP009 | Dell Inspiron 15  |        90000 |
+| LAPTOP010 | Dell Inspiron 13  |        75000 |
++-----------+-------------------+--------------+
+10 rows in set (0.02 sec)
+
+mysql> 
